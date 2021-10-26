@@ -1,0 +1,3 @@
+QUESTION 1 - Query a count of the number of cities in CITY having a Population larger than 100,000.
+
+>SOLUTION - select count(countrycode) from city where population>100000;
