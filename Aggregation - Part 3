@@ -1,3 +1,46 @@
 QUESTION 1 - Query a count of the number of cities in CITY having a Population larger than 100,000.
 
 >SOLUTION - select count(countrycode) from city where population>100000;
+
+QUESTION 2 - Query the total population of all cities in CITY where District is California.
+
+>SOLUTION - select sum(population) from city where district='California';
+
+QUESTION 3 - Query the average population of all cities in CITY where District is California.
+
+>SOLUTION - select avg(population) from city where district='California';
+
+QUESTION 4 - Query the average population for all cities in CITY, rounded down to the nearest integer.
+
+>SOLUTION - select round(avg(population)) from city;
+
+QUESTION 5 - Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+
+>SOLUTION - select sum(population) from city where countrycode='JPN';
+
+QUESTION 6 - Query the difference between the maximum and minimum populations in CITY.
+
+>SOLUTION - select max(population)-min(population) from city;
+
+QUESTION 7 - Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, but did not realize her keyboard's  key was broken until after completing the calculation. She wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary. Write a query calculating the amount of error (i.e.: actual-miscalculated  average monthly salaries), and round it up to the next integer.
+
+>SOLUTION - select ceil(avg(salary)-avg(replace(salary,'0',''))) from employees;
+
+QUESTION 8 - We define an employee's total earnings to be their monthly  worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.
+
+>SOLUTION - select max(months*salary), max(count(employee_id)) from employee group by (months*salary); 
+
+QUESTION 9 - Query the following two values from the STATION table:
+
+The sum of all values in LAT_N rounded to a scale of  decimal places.
+The sum of all values in LONG_W rounded to a scale of  decimal places.
+
+>SOLUTION - select round(sum(lat_n),2), round(sum(long_w),2) from station;
+
+QUESTION 10 - Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than 38.7880 and less than 137.2345. Truncate your answer to 4 decimal places.
+
+>SOLUTION - select round(sum(lat_n),4) from station where lat_n>38.7880 and lat_n<137.2345;
+
+QUESTION 11 - Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345. Truncate your answer to 4 decimal places.
+
+>SOLUTION - select round(max(lat_n),4) from station where lat_n<137.2345;
